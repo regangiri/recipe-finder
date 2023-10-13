@@ -10,7 +10,7 @@ const RecipeSearch = () => {
   const searchRecipe = () => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${foodName}&number=1&apiKey=acd33669900f407bac473cccf57cfbf1`
+        `https://api.spoonacular.com/recipes/complexSearch?query=${foodName}&number=10&apiKey=acd33669900f407bac473cccf57cfbf1`
       )
       .then((res) => {
         setFoodResult(res.data.results);
@@ -43,7 +43,7 @@ const RecipeSearch = () => {
             return (
               <div
                 key={data?.id}
-                className="flex flex-col items-center w-[300px] h-[350px] border-[1px] rounded-md"
+                className="flex flex-col items-center w-[300px] h-[350px] border-[1px] rounded-md mx-3 my-2"
               >
                 <span>{data?.title}</span>
                 <div className="relative w-full h-[200px]">
