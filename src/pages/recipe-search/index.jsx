@@ -21,7 +21,7 @@ const RecipeSearch = () => {
   return (
     <div>
       <div className="flex flex-col items-center justify-center py-12">
-        <span>Mulai mencari makanan</span>
+        <span className="text-2xl font-bold my-3">Mulai mencari makanan</span>
         <div className="flex w-1/2">
           <input
             type="text"
