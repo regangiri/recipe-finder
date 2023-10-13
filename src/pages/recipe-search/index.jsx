@@ -38,30 +38,31 @@ const RecipeSearch = () => {
         </div>
       </div>
       <div className="flex flex-wrap items-center justify-center">
-        {foodResult?.map((data) => {
-          return (
-            <div
-              key={data?.id}
-              className="flex flex-col items-center w-[300px] h-[350px] border-[1px] rounded-md"
-            >
-              <span>{data?.title}</span>
-              <div className="relative w-full h-[200px]">
-                <Image
-                  src={data?.image}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  alt=""
-                />
-              </div>
-              <button
-                onClick={() => router.push(`/recipe-detail/${data?.id}`)}
-                className="border-[1px]"
+        {foodResult.length > 0 &&
+          foodResult?.map((data) => {
+            return (
+              <div
+                key={data?.id}
+                className="flex flex-col items-center w-[300px] h-[350px] border-[1px] rounded-md"
               >
-                Detail Recipe
-              </button>
-            </div>
-          );
-        })}
+                <span>{data?.title}</span>
+                <div className="relative w-full h-[200px]">
+                  <Image
+                    src={data?.image}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    alt=""
+                  />
+                </div>
+                <button
+                  onClick={() => router.push(`/recipe-detail/${data?.id}`)}
+                  className="border-[1px]"
+                >
+                  Detail Recipe
+                </button>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
