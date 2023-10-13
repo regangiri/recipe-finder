@@ -1,23 +1,12 @@
+import DefaultLayout from "@/layouts/DefaultLayout";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const RecipeDetail = () => {
+const RecipeDetail = ({ foodDetail, foodRecipes }) => {
   const router = useRouter();
-  const { id } = router.query;
-  const [foodDetail, setFoodDetail] = useState({});
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=acd33669900f407bac473cccf57cfbf1`
-      )
-      .then((res) => {
-        setFoodDetail(res.data);
-        console.log(res.data);
-      });
-  }, [id]);
-
+  console.log(foodRecipes);
   return (
     <div className="flex flex-col">
       <div className="flex">
@@ -41,22 +30,55 @@ const RecipeDetail = () => {
               columnGap: "20px",
             }}
           >
-            {foodDetail.extendedIngredients.map((data, idx) => (
-              <div className="flex items-center" key={data.id}>
-                <span className="mx-3">{idx + 1}</span> <span>{data.name}</span>
+            {foodDetail?.extendedIngredients?.map((data, idx) => (
+              <div className="flex items-center" key={data?.id}>
+                <span className="mx-3">{idx + 1}</span>{" "}
+                <span>{data?.name}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
       <span className="mx-16 text-3xl font-semibold">How To Cook:</span>
-      {foodDetail.analyzedInstructions[0].steps.map((data, idx) => (
-        <div className="flex items-center ml-16" key={data.id}>
-          <span className="mx-3">{idx + 1}</span> <span>{data.step}</span>
+      {foodDetail?.analyzedInstructions?.[0]?.steps?.map((data, idx) => (
+        <div className="flex ml-16 py-2" key={data?.id}>
+          <span className="mx-3">{idx + 1}</span> <span>{data?.step}</span>
         </div>
       ))}
     </div>
   );
 };
 
+RecipeDetail.getLayout = (page) => {
+  return <DefaultLayout>{page}</DefaultLayout>;
+};
+
 export default RecipeDetail;
+
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+
+  try {
+    const response = await axios.get(
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=acd33669900f407bac473cccf57cfbf1`
+    );
+    const res = await axios.get(
+      `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=acd33669900f407bac473cccf57cfbf1`
+    );
+    const foodRecipes = res.data.ingredients;
+    const foodDetail = response.data;
+
+    return {
+      props: { foodDetail, foodRecipes },
+    };
+
+    return {
+      props: { foodDetail },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      notFound: true, // or handle the error accordingly
+    };
+  }
+}
