@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Banner from "@/components/Banner";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import Whyus from "@/components/Whyus";
 
 export default function Home() {
   const [foodName, setFoodName] = useState("");
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <div className="flex flex-col items-center justify-center w-full">
         <Banner />
+        <Whyus />
         <div className="flex flex-col w-1/2 items-center justify-center">
           <span>Mulai mencari makanan</span>
           <input
