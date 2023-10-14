@@ -33,14 +33,14 @@ const RecipeDetail = ({ foodDetail, foodRecipes }) => {
           <div
             className="column-container"
             style={{
-              columnCount: 3,
+              columnCount: 2,
               columnGap: "20px",
             }}
           >
             {foodDetail?.extendedIngredients?.map((data, idx) => (
-              <div className="flex items-center" key={data?.id}>
+              <div className="flex" key={data?.id}>
                 <span className="mr-3">{idx + 1}</span>
-                <span>{data?.name}</span>
+                <span>{data?.original}</span>
               </div>
             ))}
           </div>

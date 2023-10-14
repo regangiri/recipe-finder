@@ -15,27 +15,22 @@ const Whyus = () => {
       </div>
       <div className="flex flex-col w-1/2 pl-32 items-start">
         <span className="text-3xl font-medium leading-relaxed">Why Us</span>
-        <p className="text-justify mt-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-          laborum officiis sunt odit, fugiat voluptatibus recusandae animi
-          aliquid libero laboriosam quis doloribus quae aliquam beatae ullam
-          maxime tenetur nesciunt voluptate!
-        </p>
+        <p className="text-justify mt-2">Recipe</p>
         <div className="flex items-center mt-2">
           <CheckRoundedIcon className="text-blue-500 mr-2" />
-          <p>kenapa ahya gay ?</p>
+          <p>Thousands of recipes stored here with Spoonacular API</p>
         </div>
         <div className="flex items-center mt-2 ">
           <CheckRoundedIcon className="text-blue-500 mr-2" />
-          <p>kenapa regan gay ?</p>
+          <p>Decisions for your cooking choice</p>
         </div>
         <div className="flex items-center mt-2">
           <CheckRoundedIcon className="text-blue-500 mr-2" />
-          <p>kenapa aan gay ?</p>
+          <p>Find recipe by ingredients</p>
         </div>
         <div className="flex items-center mt-2">
           <CheckRoundedIcon className="text-blue-500 mr-2" />
-          <p>kenapa arsyad gay ?</p>
+          <p>Useful features to find recipes</p>
         </div>
       </div>
     </div>

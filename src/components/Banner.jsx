@@ -20,7 +20,7 @@ const Banner = () => {
           className="mt-2 bg-green-500 p-2 rounded-md text-white"
           onClick={() => router.push("/recipe-search")}
         >
-          Mulai Cari Resep
+          Search Recipes
         </button>
       </div>
       <div className="relative w-full h-full ml-5">
