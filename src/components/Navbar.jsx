@@ -17,9 +17,9 @@ const Navbar = () => {
         </span>
         <span
           className="text-xl mx-2 cursor-pointer"
-          onClick={() => router.push("/counting-akg")}
+          onClick={() => router.push("/about")}
         >
-          Counting Akg
+          About
         </span>
       </div>
     </div>
