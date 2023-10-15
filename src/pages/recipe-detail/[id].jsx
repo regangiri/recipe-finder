@@ -4,10 +4,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
-const RecipeDetail = ({ foodDetail, foodRecipes }) => {
+const RecipeDetail = ({ foodDetail, foodRecipes, nutritionDetail }) => {
   const router = useRouter();
   console.log(foodRecipes);
   console.log(foodDetail);
+  console.log(nutritionDetail);
+
   return (
     <div className="flex flex-col py-6">
       <div className="flex">
@@ -59,6 +61,21 @@ const RecipeDetail = ({ foodDetail, foodRecipes }) => {
           </div>
         </div>
       </div>
+      <span className="mx-16 mt-4 text-3xl font-semibold">Nutritions:</span>
+      <div
+        className="column-container"
+        style={{
+          columnCount: 2,
+          columnGap: "20px",
+        }}
+      >
+        {nutritionDetail?.good?.map((data, idx) => (
+          <div className="flex ml-16" key={data?.title}>
+            <span className="mr-3 font-semibold">{data?.title}: </span>
+            <span>{data?.amount}</span>
+          </div>
+        ))}
+      </div>
       <span className="mx-16 mt-4 text-3xl font-semibold">How To Cook:</span>
       {foodDetail?.analyzedInstructions?.[0]?.steps?.map((data, idx) => (
         <div className="flex ml-16 py-1" key={idx}>
@@ -85,11 +102,16 @@ export async function getServerSideProps(context) {
     const res = await axios.get(
       `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=acd33669900f407bac473cccf57cfbf1`
     );
+    const nutritionResponse = await axios.get(
+      `https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=acd33669900f407bac473cccf57cfbf1`
+    );
+
     const foodRecipes = res.data.ingredients;
     const foodDetail = response.data;
+    const nutritionDetail = nutritionResponse.data;
 
     return {
-      props: { foodDetail, foodRecipes },
+      props: { foodDetail, foodRecipes, nutritionDetail },
     };
 
     return {

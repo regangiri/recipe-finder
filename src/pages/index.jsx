@@ -13,8 +13,8 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center w-full">
         <Banner />
         <Whyus />
-        <div className="flex flex-col w-1/2 items-center justify-center">
-          <span>Mulai mencari makanan</span>
+        <div className="flex flex-col w-1/2 min-h-[60vh] items-center">
+          <span className="text-xl font-bold py-3">Search for Recipes</span>
           <input
             type="text"
             className="border-2 w-full rounded-md px-2 py-1 border-black"
