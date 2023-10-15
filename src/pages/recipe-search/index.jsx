@@ -176,7 +176,7 @@ const RecipeSearch = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-wrap items-center justify-center min-h-screen">
+      <div className="flex flex-wrap items-center justify-center min-h-[55vh]">
         {foodResult.length > 0 &&
           foodResult?.map((data) => {
             return (
