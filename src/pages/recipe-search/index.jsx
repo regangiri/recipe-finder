@@ -173,7 +173,9 @@ const RecipeSearch = () => {
                 key={data?.id}
                 className="flex flex-col items-center w-[300px] h-[350px] border-[1px] shadow-lg rounded-md mx-3 my-2"
               >
-                <span className="text-lg font-semibold">{data?.title}</span>
+                <span className="text-lg font-semibold h-16">
+                  {data?.title}
+                </span>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src={data?.image}
