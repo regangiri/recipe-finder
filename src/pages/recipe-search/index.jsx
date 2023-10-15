@@ -3,7 +3,7 @@ import { DeleteForeverOutlined } from "@mui/icons-material";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const RecipeSearch = () => {
   const router = useRouter();
@@ -12,6 +12,7 @@ const RecipeSearch = () => {
   const [foodResult, setFoodResult] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchByCategory, setSearchByCategory] = useState("FOODNAME");
+  const { searchQuery } = router.query;
   const searchRecipe = () => {
     axios
       .get(
@@ -69,6 +70,16 @@ const RecipeSearch = () => {
   const clearIngredient = () => {
     setTempIngredient([]);
   };
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=10&apiKey=acd33669900f407bac473cccf57cfbf1`
+      )
+      .then((res) => {
+        setFoodResult(res.data.results);
+      });
+  }, []);
 
   console.log(tempIngredient);
   console.log(foodResult);

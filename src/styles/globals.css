@@ -9,3 +9,10 @@
   background-position: center center;
   background-repeat: no-repeat;
 }
+.whyus {
+  background: linear-gradient(rgba(0, 0, 0, 0.271), rgba(0, 0, 0, 0.837)),
+    url("/assets/whyus.jpg");
+  background-size: cover; /* or contain depending on what you want */
+  background-position: center center;
+  background-repeat: no-repeat;
+}
