@@ -1,8 +1,5 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import Banner from "@/components/Banner";
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
 import Whyus from "@/components/Whyus";
 import DefaultLayout from "@/layouts/DefaultLayout";
 import { useRouter } from "next/router";

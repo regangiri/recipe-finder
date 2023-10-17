@@ -1,15 +1,9 @@
 import DefaultLayout from "@/layouts/DefaultLayout";
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import React from "react";
 
-const RecipeDetail = ({ foodDetail, foodRecipes, nutritionDetail }) => {
-  const router = useRouter();
-  console.log(foodRecipes);
-  console.log(foodDetail);
-  console.log(nutritionDetail);
-
+const RecipeDetail = ({ foodDetail, nutritionDetail }) => {
   return (
     <div className="flex flex-col py-6">
       <div className="flex">
@@ -112,10 +106,6 @@ export async function getServerSideProps(context) {
 
     return {
       props: { foodDetail, foodRecipes, nutritionDetail },
-    };
-
-    return {
-      props: { foodDetail },
     };
   } catch (error) {
     console.error("Error fetching data:", error);
